@@ -1,0 +1,1479 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass biom
+\begin_preamble
+%  template.tex for Biometrics papers
+%
+%  This file provides a template for Biometrics authors.  Use this
+%  template as the starting point for creating your manuscript document.
+%  See the file biomsample.tex for an example of a full-blown manuscript.
+
+%  ALWAYS USE THE referee OPTION WITH PAPERS SUBMITTED TO BIOMETRICS!!!
+%  You can see what your paper would look like typeset by removing
+%  the referee option.  Because the typeset version will be in two
+%  columns, however, some of your equations may be too long. DO NOT
+%  use the \longequation option discussed in the user guide!!!  This option
+%  is reserved ONLY for equations that are impossible to split across 
+%  multiple lines; e.g., a very wide matrix.  Instead, type your equations 
+%  so that they stay in one column and are split across several lines, 
+%  as are almost all equations in the journal.  Use a recent version of the
+%  journal as a guide. 
+%  
+%documentclass[useAMS]{biom}
+%
+%  If your system does not have the AMS fonts version 2.0 installed, then
+%  remove the useAMS option.
+%
+%  useAMS allows you to obtain upright Greek characters.
+%  e.g. \umu, \upi etc.  See the section on "Upright Greek characters" in
+%  this guide for further information.
+%
+%  If you are using AMS 2.0 fonts, bold math letters/symbols are available
+%  at a larger range of sizes for NFSS release 1 and 2 (using \boldmath or
+%  preferably \bmath).
+% 
+%  Other options are described in the user guide. Here are a few:
+% 
+%  -  If you use Patrick Daly's natbib  to cross-reference your 
+%     bibliography entries, use the usenatbib option
+%
+%  -  If you use \includegraphics (graphicx package) for importing graphics
+%     into your figures, use the usegraphicx option
+% 
+%  If you wish to typeset the paper in Times font (if you do not have the
+%  PostScript Type 1 Computer Modern fonts you will need to do this to get
+%  smoother fonts in a PDF file) then uncomment the next line
+%  \usepackage{Times}
+
+%%%%% PLACE YOUR OWN MACROS HERE %%%%%
+
+\def\bSig\mathbf{\Sigma}
+\newcommand{\VS}{V\&S}
+\newcommand{\tr}{\mbox{tr}}
+
+%  The rotating package allows you to have tables displayed in landscape
+%  mode.  The rotating package is NOT included in this distribution, but
+%  can be obtained from the CTAN archive.  USE OF LANDSCAPE TABLES IS
+%  STRONGLY DISCOURAGED -- create landscape tables only as a last resort if
+%  you see no other way to display the information.  If you do do this,
+%  then you need the following command.
+
+%\usepackage[figuresright]{rotating}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%  Here, place your title and author information.  Note that in 
+%  use of the \author command, you create your own footnotes.  Follow
+%  the examples below in creating your author and affiliation information.
+%  Also consult a recent issue of the journal for examples of formatting.
+
+
+%  Here are examples of different configurations of author/affiliation
+%  displays.  According to the Biometrics style, in some instances,
+%  the convention is to have superscript *, **, etc footnotes to indicate 
+%  which of multiple email addresses belong to which author.  In this case,
+%  use the \email{ } command to produce the emails in the display.
+
+%  In other cases, such as a single author or two authors from 
+%  different institutions, there should be no footnoting.  Here, use
+%  the \emailx{ } command instead. 
+
+%  The examples below corrspond to almost every possible configuration
+%  of authors and may be used as a guide.  For other configurations, consult
+%  a recent issue of the the journal.
+
+%  Single author -- USE \emailx{ } here so that no asterisk footnoting
+%  for the email address will be produced.
+
+%\author{John Author\emailx{email@address.edu} \\
+%Department of Statistics, University of Warwick, Coventry CV4 7AL, U.K.}
+
+%  Two authors from the same institution, with both emails -- use
+%  \email{ } here to produce the asterisk footnoting for each email address
+
+%\author{John Author$^{*}$\email{author@address.edu} and
+%Kathy Authoress$^{**}$\email{email2@address.edu} \\
+%Department of Statistics, University of Warwick, Coventry CV4 7AL, U.K.}
+
+%  Exactly two authors from different institutions, with both emails  
+%  USE \emailx{ } here so that no asterisk footnoting for the email address
+%  is produced.
+
+\author
+{John Author\emailx{author@address.edu} \\
+Department of Statistics, University of Warwick, Coventry CV4 7AL, U.K. 
+\and
+Kathy Author\emailx{anotherauthor@address.edu} \\
+Department of Biostatistics, University of North Carolina at Chapel Hill, 
+Chapel Hill, North Carolina, U.S.A.}
+
+%  Three or more authors from same institution with all emails displayed
+%  and footnoted using asterisks -- use \email{ } 
+
+%\author{John Author$^*$\email{author@address.edu}, 
+%Jane Author$^{**}$\email{jane@address.edu}, and 
+%Dick Author$^{***}$\email{dick@address.edu} \\
+%Department of Statistics, University of Warwick, Coventry CV4 7AL, U.K}
+
+%  Three or more authors from same institution with one corresponding email
+%  displayed
+
+%\author{John Author$^*$\email{author@address.edu}, 
+%Jane Author, and Dick Author \\
+%Department of Statistics, University of Warwick, Coventry CV4 7AL, U.K}
+
+%  Three or more authors, with at least two different institutions,
+%  more than one email displayed 
+
+%\author{John Author$^{1,*}$\email{author@address.edu}, 
+%Kathy Author$^{2,**}$\email{anotherauthor@address.edu}, and 
+%Wilma Flinstone$^{3,***}$\email{wilma@bedrock.edu} \\
+%$^{1}$Department of Statistics, University of Warwick, Coventry CV4 7AL, U.K \\
+%$^{2}$Department of Biostatistics, University of North Carolina at 
+%Chapel Hill, Chapel Hill, North Carolina, U.S.A. \\
+%$^{3}$Department of Geology, University of Bedrock, Bedrock, Kansas, U.S.A.}
+
+%  Three or more authors with at least two different institutions and only
+%  one email displayed
+
+%\author{John Author$^{1,*}$\email{author@address.edu}, 
+%Wilma Flinstone$^{2}$, and Barney Rubble$^{2}$ \\
+%$^{1}$Department of Statistics, University of Warwick, Coventry CV4 7AL, U.K \\
+%$^{2}$Department of Geology, University of Bedrock, Bedrock, Kansas, U.S.A.}
+\end_preamble
+\options useAMS,referee
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Put the summary for your paper here
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+This is the summary for this paper.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Please place your key words in alphabetical order, separated by semicolons,
+ with the first letter of the first word capitalized, and a period at the
+ end of the list.
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{keywords}A key word; But another key word; Still another key word;
+ Yet another key word.
+ 
+\backslash
+end{keywords}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+This is an Example of an Article Title
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+This will produce the submission and review information that appears  right
+ after the reference section.
+  Of course, it will be unknown when  you submit your paper, so you can
+ either leave this out or put in sample dates (these will have no effect
+ on the fate of your paper in the review process!)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Date
+
+\shape italic
+Received October
+\shape default
+ 2007.
+ 
+\shape italic
+Revised February
+\shape default
+ 2008.
+ 
+\shape italic
+Accepted March
+\shape default
+ 2008.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+These options will count the number of pages and provide volume and date
+ information in the upper left hand corner of the top of the first page
+ as in published papers.
+  The 
+\backslash
+pagerange command will only work if you place the command 
+\backslash
+label{firstpage} near the beginning of the document and 
+\backslash
+label{lastpage} at the end of the document, as we have done in this template.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Again, putting a volume number and date is for your own amusement and has
+ no bearing on what actually happens to your paper!  
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagerange{
+\backslash
+pageref{firstpage}--
+\backslash
+pageref{lastpage}} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+volume{64}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+pubyear{2008}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+artmonth{December}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+The 
+\backslash
+doi command is where the DOI for your paper would be placed should it be
+ published.
+  Again, if you make one up and stick it here, it means nothing!
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+doi{10.1111/j.1541-0420.2005.00454.x}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+This label and the label ``lastpage'' are used by the 
+\backslash
+pagerange command above to give the page range for the article.
+ You may have  to process the document twice to get this to match up with
+ what you expect.
+  When using the referee option, this will not count the pages with tables
+ and figures.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "firstpage"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+As usual, the 
+\backslash
+maketitle command creates the title and author/affiliations display.
+ If you are using the referee option, a new page, numbered page 1, will
+ start after the summary and keywords.
+  The page numbers thus count the number of pages of your manuscript in
+ the preferred submission style.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Itemize
+Remember, ``Normally, regular papers exceeding 25 pages and Reader Reaction
+ papers exceeding 12 pages in (the preferred style) will be returned to
+ the authors without review.
+ The page limit includes acknowledgements, references, and appendices, but
+ not tables and figures.
+ The page count does not include the title page and abstract.
+ A maximum of six (6) tables or figures combined is often required.''
+\end_layout
+
+\begin_layout Itemize
+You may now place the substance of your manuscript here.
+  Please use the 
+\backslash
+section, 
+\backslash
+subsection, etc commands as described in the user guide.
+\end_layout
+
+\begin_layout Itemize
+Please use 
+\backslash
+label and 
+\backslash
+ref commands to cross-reference sections, equations, tables, figures, etc.
+\end_layout
+
+\begin_layout Itemize
+Please DO NOT attempt to reformat the style of equation numbering!
+\end_layout
+
+\begin_layout Itemize
+For that matter, please do not attempt to redefine anything!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+maketitle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "s:intro"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here is the introduction.
+ The file 
+\family typewriter
+biomsample.tex
+\family default
+ gives an example of using the 
+\family typewriter
+natbib
+\family default
+ package to cross-reference citations from the bibliography.
+ Here, we just do this manually to demonstrate that the old-fashioned way
+ also is acceptable.
+ See the comment right before the bibliography section below for information
+ on using BiBTeX.
+\end_layout
+
+\begin_layout Standard
+Please note that, although this document class produces a final product
+ that is very close to the format and appearance of a typeset 
+\shape italic
+Biometrics
+\shape default
+ article, there may be some idiosyncracies that cause the format to deviate
+ slightly from that in the journal.
+ These will be corrected at the typesetting phase should your paper be accepted
+ and forwarded for publication.
+ So do not worry if such things occur!
+\end_layout
+
+\begin_layout Section
+Model
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "s:model"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+First Model Subsection
+\end_layout
+
+\begin_layout Standard
+The Cox model (Cox, 1972) is one of the most widely used statistical models.
+ Hastie, Tibshirani, and Friedman (2001) is an example of a citation to
+ a work with three authors.
+ The first time you reference one of these in the text, use all the authors
+ names.
+ However, in all subsequent references, just use Hastie et al.
+ (2001).
+ Works with four or more authors are always referenced in the text using
+ 
+\begin_inset Quotes eld
+\end_inset
+
+et al.
+\begin_inset Quotes erd
+\end_inset
+
+ All authors names should appear in the bibliography for all entries.
+\end_layout
+
+\begin_layout Subsection
+Second Model Subsection
+\end_layout
+
+\begin_layout Standard
+Please use a recent issue of 
+\shape italic
+Biometrics
+\shape default
+ as a guide to the style for citations and bibliography entries, and follow
+ that style exactly!!
+\end_layout
+
+\begin_layout Section
+Inference
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "s:inf"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Please see the file 
+\family typewriter
+biomsample.tex
+\family default
+ for fancy examples of making tables.
+ Here is a very simple one.
+ Use 
+\family typewriter
+table
+\family default
+ for tables that are narrow enough to fit in one column of the typeset journl;
+ use 
+\family typewriter
+table*
+\family default
+ for tables that need to span two columns.
+ For figures, use of 
+\family typewriter
+figure
+\family default
+ and 
+\family typewriter
+figure*
+\family default
+ is analogous.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+This is a simple table.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "t:one"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="4">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="right" valignment="top">
+<column alignment="right" valignment="top">
+<column alignment="right" valignment="top">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Hline
+\end_layout
+
+\end_inset
+
+ Estimator 
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\beta_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\beta_{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MLE 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10.18 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-$
+\end_inset
+
+3.26 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.13 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+OLS 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+9.92 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-$
+\end_inset
+
+3.19 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.11 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+WLS 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+9.88 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-$
+\end_inset
+
+3.33 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.12 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You can experiment with fancier tables than Table
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "t:one"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We can get bold symbols using 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+verb+
+\backslash
+bmath+
+\end_layout
+
+\end_inset
+
+, for example, 
+\begin_inset Formula $\bmath{\alpha}_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Discussion
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "s:discuss"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Put your final comments here.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%  The 
+\backslash
+backmatter command formats the subsequent headings so that they
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%  are in the journal style.
+  Please keep this command in your document
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%  in this position, right after the final section of the main part of 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%  the paper and right before the Acknowledgements, Supplementary Materials,
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%  and References sections.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+backmatter
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%  This section is optional.
+  Here is where you will want to cite
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%  grants, people who helped with the paper, etc.
+  But keep it short!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Acknowledgements
+\end_layout
+
+\begin_layout Standard
+The authors thank Professor A.
+ Sen for some helpful suggestions, Dr C.
+ R.
+ Rangarajan for a critical reading of the original version of the paper,
+ and an anonymous referee for very useful comments that improved the presentatio
+n of the paper.
+\begin_inset VSpace -8pt*
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%  If your paper refers to supplementary web material, then you MUST
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%  include this section!!  See Instructions for Authors at the journal
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%  website http://www.biometrics.tibs.org
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Supplementary Materials
+\end_layout
+
+\begin_layout Standard
+Web Appendix A, referenced in Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "s:model"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, is available with this paper at the Biometrics website on Wiley Online
+ Library.
+\begin_inset VSpace -8pt*
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%  Here, we create the bibliographic entries manually, following the
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%  journal style.
+  If you use this method or use natbib, PLEASE PAY
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%  CAREFUL ATTENTION TO THE BIBLIOGRAPHIC STYLE IN A RECENT ISSUE OF
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%  THE JOURNAL AND FOLLOW IT!  Failure to follow stylistic conventions
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%  just lengthens the time spend copyediting your paper and hence its
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%  position in the publication queue should it be accepted.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%  We greatly prefer that you incorporate the references for your
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%  article into the body of the article as we have done here 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%  (you can use natbib or not as you choose) than use BiBTeX,
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%  so that your article is self-contained in one file.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%  If you do use BiBTeX, please use the .bst file that comes with 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%  the distribution.
+  In this case, replace the thebibliography
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%  environment below by 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%  
+\backslash
+bibliographystyle{biom} 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+bibliography{mybibilo.bib}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key " "
+literal "true"
+
+\end_inset
+
+ Cox, D.
+ R.
+ (1972).
+ Regression models and life tables (with discussion).
+ 
+\shape italic
+Journal of the Royal Statistical Society, Series B
+\shape default
+ 
+\series bold
+34,
+\series default
+ 187–200.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key " "
+literal "true"
+
+\end_inset
+
+ Hastie, T., Tibshirani, R., and Friedman, J.
+ (2001).
+ 
+\shape italic
+The Elements of Statistical Learning: Data Mining, Inference, and Prediction
+\shape default
+.
+ New York: Springer.
+\end_layout
+
+\begin_layout Standard
+\start_of_appendix
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%dummy comment inserted by tex2lyx to ensure that this paragraph is not
+ empty
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%  To get the journal style of heading for an appendix, mimic the following.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\end_layout
+
+\begin_layout Subsection
+Title of appendix
+\end_layout
+
+\begin_layout Standard
+Put your short appendix here.
+ Remember, longer appendices are possible when presented as Supplementary
+ Web Material.
+ Please review and follow the journal policy for this material, available
+ under Instructions for Authors at 
+\family typewriter
+http://www.biometrics.tibs.org
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "lastpage"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
